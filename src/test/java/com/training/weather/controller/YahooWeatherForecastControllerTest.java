@@ -21,7 +21,7 @@ import reactor.core.publisher.MonoSink;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.StringJoiner;
 
 import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.any;
@@ -70,8 +70,11 @@ public class YahooWeatherForecastControllerTest {
             .put(LOCATION_3, WEATHER_FORECAST_3)
             .build();
 
-    private static final String LOCATIONS_PATH_PARAMETER = LOCATION_TO_WEATHER_FORECAST.keySet().stream()
-            .collect(Collectors.joining(","));
+    private static final String ALL_LOCATIONS_PATH_PARAMETER = new StringJoiner(",")
+            .add(LOCATION_1)
+            .add(LOCATION_2)
+            .add(LOCATION_3)
+            .toString();
 
     private WebTestClient webTestClient;
 
@@ -90,7 +93,7 @@ public class YahooWeatherForecastControllerTest {
     @Test
     public void shouldResponseWithWeatherForecastsOrderedByLocation() {
         List<WeatherForecast> EXPECTED_FORECASTS = ImmutableList.of(WEATHER_FORECAST_1, WEATHER_FORECAST_2, WEATHER_FORECAST_3);
-        webTestClient.get().uri("/weather/" + LOCATIONS_PATH_PARAMETER)
+        webTestClient.get().uri("/weather/{locations}", ALL_LOCATIONS_PATH_PARAMETER)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -102,7 +105,7 @@ public class YahooWeatherForecastControllerTest {
         doAnswer(emitError).when(yahooWeatherForecastService).emitWeatherForecast(eq(LOCATION_2), any());
 
         List<WeatherForecast> EXPECTED_FORECASTS = ImmutableList.of(WEATHER_FORECAST_1, WEATHER_FORECAST_3);
-        webTestClient.get().uri("/weather/" + LOCATIONS_PATH_PARAMETER)
+        webTestClient.get().uri("/weather/{locations}", ALL_LOCATIONS_PATH_PARAMETER)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
