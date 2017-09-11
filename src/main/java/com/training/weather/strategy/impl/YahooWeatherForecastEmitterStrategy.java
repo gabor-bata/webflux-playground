@@ -23,7 +23,6 @@ import java.util.List;
  */
 @Component
 public class YahooWeatherForecastEmitterStrategy implements WeatherForecastEmitterStrategy {
-
     private static final Logger LOG = LoggerFactory.getLogger(YahooWeatherForecastEmitterStrategy.class);
 
     @Autowired

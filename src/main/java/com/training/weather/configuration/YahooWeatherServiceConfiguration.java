@@ -19,7 +19,7 @@ public class YahooWeatherServiceConfiguration {
     private WeatherForecastEmitterStrategy yahooWeatherForecastEmitterStrategy;
 
     @Bean
-    public WeatherForecastService getYahooWeatherForecastService() {
+    public WeatherForecastService yahooWeatherForecastService() {
         return new DefaultWeatherForecastService(yahooWeatherForecastEmitterStrategy);
     }
 }
