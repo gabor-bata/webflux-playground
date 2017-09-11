@@ -1,5 +1,7 @@
 package com.training.weather.domain;
 
+import java.util.Objects;
+
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -8,11 +10,14 @@ import static java.util.Objects.requireNonNull;
  * @author Gabor_Bata
  */
 public class WeatherForecast {
-    private final String location;
-    private final String temperatureHigh;
-    private final String temperatureLow;
-    private final String summary;
-    private final String date;
+    private String location;
+    private String temperatureHigh;
+    private String temperatureLow;
+    private String summary;
+    private String date;
+
+    private WeatherForecast() {
+    }
 
     private WeatherForecast(Builder builder) {
         location = requireNonNull(builder.location);
@@ -20,6 +25,38 @@ public class WeatherForecast {
         temperatureLow = requireNonNull(builder.temperatureLow);
         summary = requireNonNull(builder.summary);
         date = requireNonNull(builder.date);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        WeatherForecast forecast = (WeatherForecast) o;
+        return Objects.equals(location, forecast.location) &&
+                Objects.equals(temperatureHigh, forecast.temperatureHigh) &&
+                Objects.equals(temperatureLow, forecast.temperatureLow) &&
+                Objects.equals(summary, forecast.summary) &&
+                Objects.equals(date, forecast.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, temperatureHigh, temperatureLow, summary, date);
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherForecast{" +
+                "location='" + location + '\'' +
+                ", temperatureHigh='" + temperatureHigh + '\'' +
+                ", temperatureLow='" + temperatureLow + '\'' +
+                ", summary='" + summary + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 
     public String getLocation() {
