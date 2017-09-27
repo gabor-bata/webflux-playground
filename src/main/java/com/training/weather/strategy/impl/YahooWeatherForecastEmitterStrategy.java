@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Yahoo Weather specific implemantaion of {@link WeatherForecastEmitterStrategy}.
+ * Yahoo Weather specific implementation of {@link WeatherForecastEmitterStrategy}.
  *
  * @author Gabor_Bata
  */

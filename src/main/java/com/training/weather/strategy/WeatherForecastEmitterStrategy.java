@@ -4,7 +4,7 @@ import com.training.weather.domain.WeatherForecast;
 import reactor.core.publisher.MonoSink;
 
 /**
- * Interface for emitting wather forecast.
+ * Interface for emitting weather forecast.
  *
  * @author Gabor_Bata
  */

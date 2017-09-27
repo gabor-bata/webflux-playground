@@ -19,7 +19,7 @@ import reactor.core.publisher.Flux;
 public class YahooWeatherForecastController {
     private static final Logger LOG = LoggerFactory.getLogger(YahooWeatherForecastController.class);
 
-    private WeatherForecastService weatherForecastService;
+    private final WeatherForecastService weatherForecastService;
 
     public YahooWeatherForecastController(@Qualifier("yahooWeatherForecastService") WeatherForecastService weatherForecastService) {
         this.weatherForecastService = weatherForecastService;

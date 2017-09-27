@@ -113,7 +113,7 @@ public class YahooWeatherForecastControllerTest {
     }
 
     @SuppressWarnings("unchecked")
-    private Answer<Void> emitSuccess = invocation -> {
+    private final Answer<Void> emitSuccess = invocation -> {
         String location = (String) invocation.getArguments()[0];
         MonoSink<WeatherForecast> emitter = (MonoSink<WeatherForecast>) invocation.getArguments()[1];
         emitter.success(LOCATION_TO_WEATHER_FORECAST.get(location));
@@ -121,7 +121,7 @@ public class YahooWeatherForecastControllerTest {
     };
 
     @SuppressWarnings("unchecked")
-    private Answer<Void> emitError = invocation -> {
+    private final Answer<Void> emitError = invocation -> {
         MonoSink<WeatherForecast> emitter = (MonoSink<WeatherForecast>) invocation.getArguments()[1];
         emitter.error(new IOException("Intentional exception for testing purposes."));
         return null;

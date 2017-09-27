@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class DefaultWeatherForecastService implements WeatherForecastService {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultWeatherForecastService.class);
 
-    private WeatherForecastEmitterStrategy weatherForecastEmitterStrategy;
+    private final WeatherForecastEmitterStrategy weatherForecastEmitterStrategy;
 
     public DefaultWeatherForecastService(WeatherForecastEmitterStrategy weatherForecastEmitterStrategy) {
         this.weatherForecastEmitterStrategy = weatherForecastEmitterStrategy;

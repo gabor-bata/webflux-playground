@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Sample application which could provide wather forecast data.
+ * Sample application which could provide weather forecast data.
  *
  * @author Gabor_Bata
  */
