@@ -1,4 +1,4 @@
-# WebFlux Playground [![Build Status](https://travis-ci.org/gaborbata/webflux-playground.svg)](https://travis-ci.org/gabor-bata/webflux-playground)
+# WebFlux Playground [![Build Status](https://travis-ci.org/gaborbata/webflux-playground.svg)](https://travis-ci.org/gaborbata/webflux-playground)
 
 The aim of this project is to try out some of the updates from Spring Framework 5, including the WebFlux framework for reactive style programming.
 
